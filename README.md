@@ -8,7 +8,7 @@ brew install teaspan/draw-things/draw-things-cli
 
 ### Base version
 
-The teaspan edition is currently rebased off the unreleased Draw Things Community git ref 79b43626, dated Sat Jul 25, which includes useful Krea 2 and Ideogram 4 stuff, and is as far as we know the most recent end-user-buildable commit.
+The teaspan edition is currently rebased off the unreleased Draw Things Community git ref [79b43626](https://github.com/drawthingsai/draw-things-community/commit/79b43626), dated Sat Jul 25, which includes useful Krea 2 and Ideogram 4 stuff, and is as far as we know the most recent end-user-buildable commit.
 
 ### Extra stuff
 
