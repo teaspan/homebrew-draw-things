@@ -1,8 +1,8 @@
 class DrawThingsCli < Formula
   desc "Local inference and LoRA training CLI for Draw Things"
   homepage "https://github.com/teaspan/draw-things-community"
-  url "https://github.com/drawthingsai/draw-things-community/releases/download/v1.20260430.0/draw-things-cli"
-  sha256 "7e5fb3af7dd99916d7671354a11fd40182bc6a0d16e7faf06fda7740c24915cd"
+  url "https://github.com/teaspan/draw-things-community.git", branch: "dti/main"
+  version "1.20260831.0"
   license "GPL-3.0-or-later"
 
   head "https://github.com/teaspan/draw-things-community.git", branch: "dti/main"
@@ -14,14 +14,7 @@ class DrawThingsCli < Formula
   end
 
   def install
-    executable = if build.head?
-      build_from_source
-    else
-      chmod 0555, "draw-things-cli"
-      buildpath/"draw-things-cli"
-    end
-
-    bin.install executable
+    bin.install build_from_source
 
     generate_completions_from_executable(bin/"draw-things-cli", "completion")
   end
