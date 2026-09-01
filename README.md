@@ -1,6 +1,6 @@
 ## A tap for a more recent Draw Things CLI build
 
-Homebrew tap for the Draw Things CLI.  It builds from source at the tip of the `dti/main` branch of the [teaspan patchset](https://github.com/teaspan/draw-things-community), a set of unofficial patches maintained against upstream.  As of this writing (31 August 2026), the upstream repository's `Package.swift` references missing sources, so it does not build.  The patched tree does.
+Homebrew tap for the Draw Things CLI.  It builds from source at the tip of the `dti/main` branch of the [teaspan patchset](https://github.com/teaspan/draw-things-community), a set of unofficial patches maintained against upstream.  As of this writing (1 September 2026), the upstream repository's `Package.swift` references missing sources, so it does not build.  The patched tree does.
 
 ```
 brew install teaspan/draw-things/draw-things-cli
@@ -8,7 +8,7 @@ brew install teaspan/draw-things/draw-things-cli
 
 ### Base version
 
-The teaspan edition is currently rebased off the unreleased Draw Things Community git ref [79b43626](https://github.com/drawthingsai/draw-things-community/commit/79b43626), dated Sat Jul 25, which includes useful Krea 2 and Ideogram 4 stuff, and is as far as we know the most recent end-user-buildable commit.
+The teaspan edition is currently rebased off the unreleased Draw Things Community git ref [518b5c40](https://github.com/drawthingsai/draw-things-community/commit/518b5c40), dated Mon Aug 24, which includes useful Krea 2 and Ideogram 4 stuff, and is as far as we know the most recent end-user-buildable commit.
 
 ### Extra stuff
 
