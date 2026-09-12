@@ -16,8 +16,7 @@ On top of upstream, the teaspan `dti/main` patchset currently carries additional
 
 - Import of LTX-2.3 checkpoints
 - Import of ComfyUI scaled-FP8 safetensors
-- A small extra tool `dtiSplit`, for splitting model files into external-data parts
-- Keeps BF16 matmul rows in BF16 when quantizing, instead of narrowing them to F16
+- Keep BF16 matmul rows in BF16 when quantizing, instead of narrowing them to F16
 - Adds a `--codec` option to the model quantizer
 - Adds a `--no-advertising` flag to the gRPC server
 - Adds a `--separate-lora` flag to the gRPC server
@@ -25,8 +24,10 @@ On top of upstream, the teaspan `dti/main` patchset currently carries additional
 - Stops the import progress spewing "100%" over and over on certain imports
 - Write AV output as a raw NUT container with rgb48le frames and pcm_f32le audio
 
-The teaspan edition also includes Linux-specific patches.  They are (should be) no-ops on macOS, so the Homebrew build doesn't benefit from them, still:
+The teaspan edition also includes additional tools and Linux-specific patches.  They are (should be) no-ops on macOS, and the additional tools are not built by this formula, so the Homebrew build doesn't benefit from them, and here's what you're missing:
 
 - mmap whole-file reads on Linux instead of copying them into RAM
 - Builds the Trainer and Downloader on Linux
 - Links ccv and NNC as a single shared library
+- An extra tool, `dtiSplit`, for splitting model files to/from external-data parts
+- An extra tool, `dtiMerge`, for baking LoRA into models and general model mixing
