@@ -8,13 +8,16 @@ brew install teaspan/draw-things/draw-things-cli
 
 ### Base version
 
-The teaspan edition is currently rebased off the unreleased [Draw Things Community](https://github.com/drawthingsai/draw-things-community) git ref 08e798b5, tagged v26.0910.1, dated Sat Sep 12.
+The teaspan edition is currently rebased off the unreleased [Draw Things Community](https://github.com/drawthingsai/draw-things-community) git ref 452256c5, just past tag v26.1023.0, dated Sat Oct 24.
 
 ### Extra stuff
 
 On top of upstream, the teaspan `dti/main` patchset currently carries additional features:
 
 - Import of LTX-2.3 checkpoints
+- Import and quantization of MiniMax H3 checkpoints
+- Import of Qwen Image 2.1 checkpoints
+- Import of MOSS Image checkpoints
 - Import of ComfyUI scaled-FP8 safetensors
 - Keep BF16 matmul rows in BF16 when quantizing, instead of narrowing them to F16
 - Adds a `--codec` option to the model quantizer
