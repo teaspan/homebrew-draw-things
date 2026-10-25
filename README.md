@@ -24,7 +24,6 @@ On top of upstream, the teaspan `dti/main` patchset currently carries additional
 - Adds a `--no-advertising` flag to the gRPC server
 - Adds a `--separate-lora` flag to the gRPC server
 - Adds JSON output (`--json`) to `draw-things-cli models import`
-- Stops the import progress spewing "100%" over and over on certain imports
 - Write AV output as a raw NUT container with rgb48le frames and pcm_f32le audio
 
 The teaspan edition also includes additional tools and Linux-specific patches.  They are (should be) no-ops on macOS, and the additional tools are not built by this formula, so the Homebrew build doesn't benefit from them, and here's what you're missing:
