@@ -8,7 +8,7 @@ brew install teaspan/draw-things/draw-things-cli
 
 ### Base version
 
-The teaspan edition is currently rebased off the unreleased [Draw Things Community](https://github.com/drawthingsai/draw-things-community) git ref 452256c5, just past tag v26.1023.0, dated Sat Oct 24.
+The teaspan edition is currently rebased off the unreleased [Draw Things Community](https://github.com/drawthingsai/draw-things-community) git ref 3f7fcd9499, just past tag v26.1023.0, dated Sun Oct 25.
 
 ### Extra stuff
 
