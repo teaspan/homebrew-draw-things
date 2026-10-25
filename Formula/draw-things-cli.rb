@@ -35,7 +35,7 @@ class DrawThingsCli < Formula
       "swift", "build", "--disable-sandbox", "--cache-path", buildpath/"swiftpm-cache",
       "--config-path", buildpath/"swiftpm-config", "--security-path",
       buildpath/"swiftpm-security", "--scratch-path", scratch_path, "-c", "release",
-      "--product", "draw-things-cli"
+      "--build-system", "native", "--product", "draw-things-cli"
     )
 
     scratch_path/"release"/"draw-things-cli"
