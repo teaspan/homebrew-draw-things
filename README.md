@@ -6,6 +6,15 @@ Homebrew tap for the Draw Things CLI.  It builds from source at the tip of the `
 brew install teaspan/draw-things/draw-things-cli
 ```
 
+### To update
+
+To rebuild and reinstall using the current tip of `dti/main`:
+
+```
+brew update
+brew reinstall teaspan/draw-things/draw-things-cli
+```
+
 ### Base version
 
 The teaspan edition is currently rebased off the unreleased [Draw Things Community](https://github.com/drawthingsai/draw-things-community) git ref fb0291c59e, just past tag v26.1023.0, dated Mon Oct 26.
