@@ -2,7 +2,7 @@ class DrawThingsCli < Formula
   desc "Local inference and LoRA training CLI for Draw Things"
   homepage "https://github.com/teaspan/draw-things-community"
   url "https://github.com/teaspan/draw-things-community.git", branch: "dti/main"
-  version "1.20261024.0"
+  version "1.20261026.0"
   license "GPL-3.0-or-later"
 
   head "https://github.com/teaspan/draw-things-community.git", branch: "dti/main"
