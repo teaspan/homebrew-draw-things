@@ -33,6 +33,13 @@ On top of upstream, the teaspan `dti/main` patchset currently carries additional
 
 which are incorporated in the `draw-things-cli` built by this formula.
 
+The formula also installs a standalone ModelQuantizer, as `draw-things-quantizer`, and comes with additional features over the stock version:
+
+- Quantization of MiniMax H3 checkpoints
+- Keep BF16 matmul rows in BF16 (instead of narrowing them to F16)
+- A `--codec` override option (e.g. `--codec i8x` or `--codec i4x`)
+- Match the Draw Things catalog tensor precisions when quantizing Krea 2
+
 ### Model prep tool
 
 For some checkpoints you may need to run [prep-model.py](https://gist.github.com/teaspan/ea15f459934974f914c4771e4d9ff87e) over them first, to massage them into an import-able shape.
@@ -46,13 +53,6 @@ The full [teaspan edition's dti/main branch](https://github.com/teaspan/draw-thi
 - Links ccv and NNC as a single shared library
 - An extra tool, `dtiSplit`, for splitting model files to/from external-data parts
 - An extra tool, `dtiMerge`, for baking LoRA into models and general model mixing
-
-several improvements to the standalone ModelQuantizer tool:
-
-- Quantization of MiniMax H3 checkpoints
-- Keep BF16 matmul rows in BF16 (instead of narrowing them to F16)
-- A `--codec` override option
-- Match the Draw Things catalog tensor precisions when quantizing Krea 2
 
 and some minor behavioural options for the gRPC server:
 

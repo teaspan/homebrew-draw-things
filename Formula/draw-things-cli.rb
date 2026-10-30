@@ -14,7 +14,7 @@ class DrawThingsCli < Formula
   end
 
   def install
-    bin.install build_from_source
+    bin.install %w[draw-things-cli draw-things-quantizer].map(&method(:build_from_source))
 
     generate_completions_from_executable(bin/"draw-things-cli", "completion")
   end
@@ -23,11 +23,12 @@ class DrawThingsCli < Formula
     assert_match "Local inference and training CLI", shell_output("#{bin}/draw-things-cli --help")
     assert_match "--model", shell_output("#{bin}/draw-things-cli generate --help")
     assert_match "Model utilities", shell_output("#{bin}/draw-things-cli models --help")
+    assert_match "--codec", shell_output("#{bin}/draw-things-quantizer --help")
   end
 
   private
 
-  def build_from_source
+  def build_from_source(product)
     scratch_path = buildpath/".build"
 
     ENV["CLANG_MODULE_CACHE_PATH"] = buildpath/"clang-module-cache"
@@ -35,9 +36,9 @@ class DrawThingsCli < Formula
       "swift", "build", "--disable-sandbox", "--cache-path", buildpath/"swiftpm-cache",
       "--config-path", buildpath/"swiftpm-config", "--security-path",
       buildpath/"swiftpm-security", "--scratch-path", scratch_path, "-c", "release",
-      "--build-system", "native", "--product", "draw-things-cli"
+      "--build-system", "native", "--product", product
     )
 
-    scratch_path/"release"/"draw-things-cli"
+    scratch_path/"release"/product
   end
 end
