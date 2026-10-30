@@ -52,6 +52,7 @@ several improvements to the standalone ModelQuantizer tool:
 - Quantization of MiniMax H3 checkpoints
 - Keep BF16 matmul rows in BF16 (instead of narrowing them to F16)
 - A `--codec` override option
+- Match the Draw Things catalog tensor precisions when quantizing Krea 2
 
 and some minor behavioural options for the gRPC server:
 
