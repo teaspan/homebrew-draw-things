@@ -13,7 +13,15 @@ class DrawThingsCli < Formula
     disable! date: "2026-03-31", because: "is macOS-only"
   end
 
+  # use our s4nnc, for the ezm7 external-data fix
+  resource "s4nnc" do
+    url "https://github.com/teaspan/s4nnc.git", branch: "dti/main"
+  end
+
   def install
+    resource("s4nnc").stage buildpath/"s4nnc"
+    swift "package", "edit", "s4nnc", "--path", buildpath/"s4nnc"
+
     bin.install %w[draw-things-cli draw-things-quantizer].map(&method(:build_from_source))
 
     generate_completions_from_executable(bin/"draw-things-cli", "completion")
@@ -28,16 +36,21 @@ class DrawThingsCli < Formula
 
   private
 
-  def build_from_source(product)
-    scratch_path = buildpath/".build"
+  def scratch_path = buildpath/".build"
 
+  # Workspace options go after the verb but before a `package` subcommand.
+  # SwiftPM's sandbox won't nest inside Homebrew's.
+  def swift(verb, *args)
     ENV["CLANG_MODULE_CACHE_PATH"] = buildpath/"clang-module-cache"
     system(
-      "swift", "build", "--disable-sandbox", "--cache-path", buildpath/"swiftpm-cache",
+      "swift", verb, "--disable-sandbox", "--cache-path", buildpath/"swiftpm-cache",
       "--config-path", buildpath/"swiftpm-config", "--security-path",
-      buildpath/"swiftpm-security", "--scratch-path", scratch_path, "-c", "release",
-      "--build-system", "native", "--product", product
+      buildpath/"swiftpm-security", "--scratch-path", scratch_path, *args
     )
+  end
+
+  def build_from_source(product)
+    swift "build", "-c", "release", "--build-system", "native", "--product", product
 
     scratch_path/"release"/product
   end
