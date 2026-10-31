@@ -21,7 +21,7 @@ The teaspan edition is currently rebased off the unreleased [Draw Things Communi
 
 ### Improvements
 
-On top of upstream, the teaspan `dti/main` patchset currently carries additional features:
+On top of upstream, the teaspan `dti/main` patchset currently carries additional features, incorporated in the `draw-things-cli` built by this formula:
 
 - Import of LTX-2.3 checkpoints
 - Import of MiniMax H3 checkpoints
@@ -29,16 +29,17 @@ On top of upstream, the teaspan `dti/main` patchset currently carries additional
 - Import of MOSS Image checkpoints
 - Import of ComfyUI scaled-FP8 safetensors
 - Adds JSON output (`--json`) to `draw-things-cli models import`
-- Write AV output as a raw NUT container with rgb48le frames and pcm_f32le audio
+- Write AV output as a raw NUT container with rgb48le frames and pcm_f32le audio. The NUT output also accepts `--video-format` of `rgb48le`, `rgb24` or `gbrpf16le`.  These are all raw frame formats, so the files are large.
 
-which are incorporated in the `draw-things-cli` built by this formula.
+### Quantizer
 
-The formula also installs a standalone ModelQuantizer, as `draw-things-quantizer`, and comes with additional features over the stock version:
+The formula also installs a standalone ModelQuantizer, as `draw-things-quantizer`, and this also comes with additional features over the upstream version:
 
 - Quantization of MiniMax H3 checkpoints
 - Keep BF16 matmul rows in BF16 (instead of narrowing them to F16)
-- A `--codec` override option (e.g. `--codec i8x` or `--codec i4x`)
-- Match the Draw Things catalog tensor precisions when quantizing Krea 2
+- A `--codec` override option for the bulk.
+- Codec options include i8x, i6x, i4x, the palette codecs (q4p to q8p, ezm7), and certain subtypes like i8x:q6k.
+- Matches the Draw Things catalog tensor precisions when quantizing Qwen Image 2.1 & Krea 2 models.
 
 ### Model prep tool
 
