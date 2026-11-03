@@ -28,7 +28,8 @@ On top of upstream, the teaspan `dti/main` patchset currently carries additional
 - Import of Qwen Image 2.1 checkpoints
 - Import of MOSS Image checkpoints
 - Import of ComfyUI scaled-FP8 safetensors
-- Adds JSON output (`--json`) to `draw-things-cli models import`
+- Adds JSON output option (`--json`) to `draw-things-cli models import`
+- Checkpoints are always mmap'd on `models import`, macOS doesn't need to slurp them entire.
 - Write AV output as a raw NUT container with rgb48le frames and pcm_f32le audio. The NUT output also accepts `--video-format` of `rgb48le`, `rgb24` or `gbrpf16le`.  These are all raw frame formats, so the files are large.
 
 ### Quantizer
