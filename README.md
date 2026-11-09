@@ -17,30 +17,34 @@ brew reinstall teaspan/draw-things/draw-things-cli
 
 ### Base version
 
-The teaspan edition is currently rebased off the unreleased [Draw Things Community](https://github.com/drawthingsai/draw-things-community) git ref fb0291c59e, just past tag v26.1023.0, dated Mon Oct 26.
+The teaspan edition is currently rebased off the unreleased [Draw Things Community](https://github.com/drawthingsai/draw-things-community) git ref e049d92ff2, dated Mon Nov 9.
+
+### Upstream inclusions
+
+By installing this variant you get unreleased features from upstream's source code. Current notable inclusions:
+
+- Import of MiniMax H3, Qwen Image 2.1, and MOSS Image checkpoints.
 
 ### Improvements
 
-On top of upstream, the teaspan `dti/main` patchset currently carries additional features, incorporated in the `draw-things-cli` built by this formula:
+On top of upstream, the teaspan `dti/main` patchset carries additional fixes & features, incorporated in the `draw-things-cli` built by this formula:
 
 - Import of LTX-2.3 checkpoints
-- Import of MiniMax H3 checkpoints
-- Import of Qwen Image 2.1 checkpoints
-- Import of MOSS Image checkpoints
 - Import of ComfyUI scaled-FP8 safetensors
+- Fixes for issues in the import of the MOSS time embedder and Qwen Image 2.1's zero-centred text norm.
 - Adds JSON output option (`--json`) to `draw-things-cli models import`
-- Checkpoints are always mmap'd on `models import`, macOS doesn't need to slurp them entire.
-- Write AV output as a raw NUT container with rgb48le frames and pcm_f32le audio. The NUT output also accepts `--video-format` of `rgb48le`, `rgb24` or `gbrpf16le`.  These are all raw frame formats, so the files are large.
+- Checkpoints are always mmap'd on `models import`, macOS doesn't need to slurp them entire, may solve memory-constrained import for some users.
+- Option to write video output as a raw NUT container with rgb48le frames and pcm_f32le audio. The NUT output also accepts `--video-format` of `rgb48le`, `rgb24` or `gbrpf16le`.  These are all raw frame formats, so the files are large.
 
 ### Quantizer
 
 The formula also installs a standalone ModelQuantizer, as `draw-things-quantizer`, and this also comes with additional features over the upstream version:
 
 - Quantization of MiniMax H3 checkpoints
+- Matches the Draw Things catalog tensor precisions when quantizing Qwen Image 2.1 & Krea 2 models.
 - Keep BF16 matmul rows in BF16 (instead of narrowing them to F16)
 - A `--codec` override option for the bulk.
 - Codec options include i8x, i6x, i4x, the palette codecs (q4p to q8p, ezm7), and certain subtypes like i8x:q6k.
-- Matches the Draw Things catalog tensor precisions when quantizing Qwen Image 2.1 & Krea 2 models.
 
 ### Model prep tool
 
