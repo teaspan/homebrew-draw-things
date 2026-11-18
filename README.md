@@ -33,6 +33,7 @@ On top of upstream, the teaspan `dti/main` patchset carries additional fixes & f
 - Import of ComfyUI scaled-FP8 safetensors
 - Fixes for issues in the import of the MOSS time embedder and Qwen Image 2.1's zero-centred text norm.
 - Adds JSON output option (`--json`) to `draw-things-cli models import`
+- Shell completion offers files and directories where a path is expected, such as `models import <file>` and `--models-dir`
 - Checkpoints are always mmap'd on `models import`, macOS doesn't need to slurp them entire, may solve memory-constrained import for some users.
 - Option to write video output as a raw NUT container with rgb48le frames and pcm_f32le audio. The NUT output also accepts `--video-format` of `rgb48le`, `rgb24` or `gbrpf16le`.  These are all raw frame formats, so the files are large.
 

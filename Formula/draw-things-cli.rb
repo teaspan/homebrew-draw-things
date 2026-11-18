@@ -2,7 +2,7 @@ class DrawThingsCli < Formula
   desc "Local inference and LoRA training CLI for Draw Things"
   homepage "https://github.com/teaspan/draw-things-community"
   url "https://github.com/teaspan/draw-things-community.git", branch: "dti/main"
-  version "1.20261109.0"
+  version "1.20261118.0"
   license "GPL-3.0-or-later"
 
   head "https://github.com/teaspan/draw-things-community.git", branch: "dti/main"
@@ -32,6 +32,11 @@ class DrawThingsCli < Formula
     assert_match "--model", shell_output("#{bin}/draw-things-cli generate --help")
     assert_match "Model utilities", shell_output("#{bin}/draw-things-cli models --help")
     assert_match "--codec", shell_output("#{bin}/draw-things-quantizer --help")
+
+    touch "model.safetensors"
+    mkdir "Weights"
+    assert_equal "model.safetensors", completions("models import mo")
+    assert_equal "Weights", completions("generate --models-dir We")
   end
 
   private
@@ -53,5 +58,18 @@ class DrawThingsCli < Formula
     swift "build", "-c", "release", "--build-system", "native", "--product", product
 
     scratch_path/"release"/product
+  end
+
+  # The candidates bash offers for the last word of a command line.
+  def completions(line)
+    words = ["draw-things-cli", *line.split]
+
+    pipe_output("bash", <<~BASH, 0).chomp
+      source #{bash_completion}/draw-things-cli
+      COMP_WORDS=(#{words.join(" ")}) COMP_CWORD=#{words.size - 1}
+      COMP_LINE="${COMP_WORDS[*]}" COMP_POINT=${#COMP_LINE}
+      _draw-things-cli #{words.first} #{words.last} #{words[-2]}
+      echo "${COMPREPLY[*]}"
+    BASH
   end
 end
