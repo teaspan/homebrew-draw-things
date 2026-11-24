@@ -17,13 +17,7 @@ brew reinstall teaspan/draw-things/draw-things-cli
 
 ### Base version
 
-The teaspan edition is currently rebased off the unreleased [Draw Things Community](https://github.com/drawthingsai/draw-things-community) git ref e049d92ff2, dated Mon Nov 9.
-
-### Upstream inclusions
-
-By installing this variant you get unreleased features from upstream's source code. Current notable inclusions:
-
-- Import of MiniMax H3, Qwen Image 2.1, and MOSS Image checkpoints.
+The teaspan edition is currently rebased off the [Draw Things Community](https://github.com/drawthingsai/draw-things-community) git ref 7c010ec851, dated Thu Nov 19.
 
 ### Improvements
 
