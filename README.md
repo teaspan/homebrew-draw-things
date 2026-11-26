@@ -23,7 +23,7 @@ The teaspan edition is currently rebased off the [Draw Things Community](https:/
 
 On top of upstream, the teaspan `dti/main` patchset carries additional fixes & features, incorporated in the `draw-things-cli` built by this formula:
 
-- Import of LTX-2.3 checkpoints
+- Import of LTX-2.3 and MiniMax H3 Image checkpoints
 - Import of ComfyUI scaled-FP8 safetensors
 - Fixes for issues in the import of the MOSS time embedder and Qwen Image 2.1's zero-centred text norm.
 - Adds JSON output option (`--json`) to `draw-things-cli models import`
