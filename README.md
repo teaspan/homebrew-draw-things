@@ -35,7 +35,7 @@ On top of upstream, the teaspan `dti/main` patchset carries additional fixes & f
 
 The formula also installs a standalone ModelQuantizer, as `draw-things-quantizer`, and this also comes with additional features over the upstream version:
 
-- Quantization of MiniMax H3 checkpoints
+- Quantization of MiniMax H3 and H3 Image checkpoints
 - Matches the Draw Things catalog tensor precisions when quantizing Qwen Image 2.1 & Krea 2 models.
 - Keep BF16 matmul rows in BF16 (instead of narrowing them to F16)
 - A `--codec` override option for the bulk.
